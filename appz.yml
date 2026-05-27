@@ -1,0 +1,57 @@
+app:
+  name: dedupeconsumer
+  code: DEDUPECONSUMER
+  notify: edavis@ecloudcontrol.com
+
+build:
+  version: 21.0
+  env: DEV
+  build_file: none
+  output_files: output/*.zip
+  image_template: consumermaster-21.0
+  
+deploy:
+  context: edavis043/DEV
+  type: deployment
+  replicas: 1
+  
+properties:
+  PYTHONPATH: /app
+  REDIS_HOST: redis-7-0
+  REDIS_PORT: 6379
+  REDIS_DB: redis
+  RABBITMQ_HOST: rabbitmq
+  RABBITMQ_USER: guest
+  RABBITMQ_PASSWORD: quest
+  RABBITMQ_PORT:
+  # REPLICA_ID:
+  DB_HOST: 10.0.1.9
+  DB_USER: pixcasba
+  DB_PASS: pass
+  DB_NAME: CASBA
+  DB_PORT: 4730
+  DB_POOL_SIZE: 32
+  MONGO_USERNAME: dedupe_user
+  MONGO_PASSWORD: pass
+  # MONGO_HOST: ""
+  MONGO_PORT: 27017
+  MONGO_DB_NAME: dedupe_db
+  MONGO_COLLECTION_NAME: KSFE_APP_CustomerLogs
+  MONGO_URI: 
+  MONGO_DB: dedupe_db
+  CUSTOMER_DEDUPE_DETAILS: CustomerDeDupeDetails
+  MAX_RETRIES: 5
+  QUEUE_NAME: task_queue
+  DLQ_NAME: task_queue_dlq
+  PROCESSED_QUEUE: status_queue
+  ORGANIZATION_STATUS_QUEUE: organization_status_queue
+  ORGANIZATION_QUEUE_NAME: organization_queue
+  ONBOARDING_QUEUE_NAME: onboarding_queue
+  ORGANIZATION_RESULT_COLLECTION: OrganizationChildLog
+  XLIT_PORT: 8010
+  USE_XLIT: 0
+  XLIT_SERVICE_URL: http://xlit_service:8010
+  CELERY_BROKER_URL: amqp://guest:guest@rabbitmq-3-12:5672//
+  RECIEVER_PORT: 5672
+  
+  revision: 11
