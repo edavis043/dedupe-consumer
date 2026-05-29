@@ -54,4 +54,4 @@ properties:
   CELERY_BROKER_URL: amqp://guest:guest@rabbitmq-3-12:5672//
   RECIEVER_PORT: 5672
   
-  revision: 4
+  revision: 5
